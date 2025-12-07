@@ -6,20 +6,23 @@ const connectDB = require('./config/db'); // MongoDB connection
 dotenv.config();
 
 const app = express();
-
-// Connect to MongoDB
-
 connectDB();
-// Middleware
+
 app.use(cors());           // Enable cross-origin requests (for Angular frontend)
 app.use(express.json());   // Parse JSON bodies
 
 
-// Define PORT
-
-
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/auth',authRoutes);
+
+const movieRoutes = require('./routes/movieRoutes');
+app.use('/api/movies',movieRoutes);
+
+const cityRoutes = require('./routes/cityRoutes');
+app.use('/api/cities',cityRoutes)
+
+const theatreRoute = require('./routes/theatreRoutes');
+app.use('/api/theatres',theatreRoute);
 
 // Test route
 app.get('/', (req, res) => {
