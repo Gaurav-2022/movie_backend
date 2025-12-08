@@ -24,6 +24,12 @@ app.use('/api/cities',cityRoutes)
 const theatreRoute = require('./routes/theatreRoutes');
 app.use('/api/theatres',theatreRoute);
 
+const showRoutes = require('./routes/showRoutes');
+app.use('/api/show',showRoutes);
+
+const bookRoutes = require('./routes/bookingRoutes');
+app.use('/api/book',bookRoutes)
+
 // Test route
 app.get('/', (req, res) => {
     res.send('Movie Booking API is running');
